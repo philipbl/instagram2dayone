@@ -33,6 +33,7 @@ def run():
                        "#instagram2dayone",
                        "{} {} were added to Day One.".format(len(images),
                                                              "images" if len(images) > 1 else "image"))
+    return len(images)
 
 
 def _convert(name, folder_contents, client):
@@ -90,10 +91,18 @@ class MainPage(webapp2.RequestHandler):
         self.response.headers['Content-Type'] = 'text/plain'
         self.response.write('Nothing to see here.')
 
-        run()
+
+class CheckPage(webapp2.RequestHandler):
+
+    def get(self):
+        images = run()
+
+        self.response.headers['Content-Type'] = 'text/plain'
+        self.response.write('{} {} were added to Day One.'.format(images, 'photos' if images != 1 else 'photo'))
 
 
 app = webapp2.WSGIApplication([
     ('/', MainPage),
+    ('/check', CheckPage),
 ], debug=True)
 

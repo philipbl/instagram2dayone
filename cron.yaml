@@ -1,0 +1,4 @@
+cron:
+- description: Check if there is a new image
+  url: /check
+  schedule: every 5 minutes from 12:30 to 06:00
