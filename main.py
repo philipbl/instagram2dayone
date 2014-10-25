@@ -29,7 +29,7 @@ def run():
 
     if len(images) > 0:
         mail.send_mail("philiplundrigan@gmail.com",
-                       "trigger@ifttt.com",
+                       "trigger@recipe.ifttt.com",
                        "#instagram2dayone",
                        "{} {} were added to Day One.".format(len(images),
                                                              "images" if len(images) > 1 else "image"))
